@@ -39,7 +39,7 @@ public class ReactiveProductRepositoryIntegrationTest {
 
         repository
                 .save(Flux.just(new Product("T Shirt", "Spring Guru printed T Shirt", new BigDecimal(125), "tshirt1.png"),
-                        new Product("T Shirt", "Spring Guru plain T Shirt", new BigDecimal(115), "tshirt2.png"),
+                        new Product("T Shirt1", "Spring Guru plain T Shirt", new BigDecimal(115), "tshirt2.png"),
                         new Product("Mug", "Spring Guru printed Mug", new BigDecimal(39), "mug1.png"),
                         new Product("Cap", "Spring Guru printed Cap", new BigDecimal(66), "cap1.png")))
 
