@@ -20,7 +20,7 @@ public class ProductService {
 	
 	public Flux<Product> findAllProducts()
 	{
-		return productRepository.findByName("N");
+		return productRepository.findAll();
 	}
 	
 	@PostConstruct
