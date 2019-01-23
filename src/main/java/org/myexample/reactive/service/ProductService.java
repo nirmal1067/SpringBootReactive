@@ -9,6 +9,11 @@ import org.myexample.reactive.repositories.ReactiveProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+
 import reactor.core.publisher.Flux;
 
 @Service
@@ -20,10 +25,13 @@ public class ProductService {
 	
 	public Flux<Product> findAllProducts()
 	{
+		
 		return productRepository.findAll();
 	}
 	
-	@PostConstruct
+	@Autowired
+	private MongoClient mongoClient;
+	//@PostConstruct
 	public void pushData()
 	{
 	   Product product =  new Product("N", "Spring Guru plain T Shirt", new BigDecimal(115), "tshirt2.png");
@@ -32,7 +40,17 @@ public class ProductService {
 		productRepository.save(product);
 		productRepository.save(product1);
 		
-		System.out.println("************************************Data injected into Monog ******************************************");
+		    DB db = mongoClient.getDB("Product");
+	        
+	     //  MongoDatabase mDB =  mongoClient.getDatabase("QuoteDB");
+	       
+	       DBCollection dbCollection = db.getCollection("Product");
+	        
+	       System.out.println("Test me" + dbCollection.count());
+		
+		//productRepository.
+		
+		System.out.println("************************************Data injected into Monog change******************************************" + productRepository.findAll().count());
 		
 	}
 

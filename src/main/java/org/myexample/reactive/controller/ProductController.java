@@ -24,6 +24,7 @@ public class ProductController {
 	@GetMapping(path="/all",produces=MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Flux<Product> getAllProducts()
 	{
+		productService.pushData();
 		return productService.findAllProducts();
 	}
 	

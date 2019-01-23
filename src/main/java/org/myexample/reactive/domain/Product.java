@@ -1,16 +1,15 @@
 package org.myexample.reactive.domain;
 
-import org.bson.types.ObjectId;
+import java.math.BigDecimal;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
-
-@Document
+@Document( collection="Product")
 public class Product {
 
     @Id
-    private ObjectId _id;
+    private String id;
     private String name;
     private String description;
     private BigDecimal price;
@@ -23,12 +22,20 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public ObjectId getId() {
-        return _id;
+    public String getId() {
+        return id;
     }
 
-    public void setId(ObjectId id) {
-        this._id = id;
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setId(String id) {
+        this.id = id;
     }
 
     public String getDescription() {

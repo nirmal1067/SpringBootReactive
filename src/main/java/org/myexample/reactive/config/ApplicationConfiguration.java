@@ -16,7 +16,7 @@ import com.mongodb.reactivestreams.client.MongoClients;
 
 //@Configuration
 @EnableReactiveMongoRepositories
-@AutoConfigureAfter(EmbeddedMongoAutoConfiguration.class)
+//@AutoConfigureAfter(EmbeddedMongoAutoConfiguration.class)
 class ApplicationConfiguration extends AbstractReactiveMongoConfiguration {
     private final Environment environment;
 
@@ -27,13 +27,13 @@ class ApplicationConfiguration extends AbstractReactiveMongoConfiguration {
     @Override
     public MongoClient reactiveMongoClient() {
         int port = 27017;
-        return MongoClients.create(String.format("mongodb://localhost:%d", port));
+        return MongoClients.create();
     }
    
 
     @Override
     protected String getDatabaseName() {
-        return "reactive-mongo";
+        return "Product";
     }
     
     
